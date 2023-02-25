@@ -59,7 +59,7 @@ namespace Smartwyre.DeveloperTest.Services
 
             if (result.Success)
             {
-                account.Balance -= request.Amount;
+                account.Withdraw(request.Amount);
 
                 var accountDataStoreUpdateData = new AccountDataStore();
                 accountDataStoreUpdateData.UpdateAccount(account);

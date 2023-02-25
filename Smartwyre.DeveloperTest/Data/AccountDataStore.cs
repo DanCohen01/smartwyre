@@ -7,7 +7,7 @@ namespace Smartwyre.DeveloperTest.Data
         public Account GetAccount(string accountNumber)
         {
             // Access database to retrieve account, code removed for brevity 
-            return new Account();
+            return new Account(accountNumber, 0, AccountStatus.Live, AllowedPaymentSchemes.BankToBankTransfer);
         }
 
         public void UpdateAccount(Account account)
