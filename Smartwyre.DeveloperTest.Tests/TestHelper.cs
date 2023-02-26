@@ -9,12 +9,14 @@ namespace Smartwyre.DeveloperTest.Tests
 {
     public static class TestHelper
     {
-        public static Account CreateMockAccount(decimal balance = 100, AllowedPaymentSchemes paymentSchemes = AllowedPaymentSchemes.BankToBankTransfer | AllowedPaymentSchemes.ExpeditedPayments | AllowedPaymentSchemes.AutomatedPaymentSystem)
+        public static Account CreateMockAccount(decimal balance = 100, 
+            AllowedPaymentSchemes paymentSchemes = AllowedPaymentSchemes.BankToBankTransfer | AllowedPaymentSchemes.ExpeditedPayments | AllowedPaymentSchemes.AutomatedPaymentSystem, 
+            AccountStatus accountStatus = AccountStatus.Live)
         {
             return new Account(
                 "12345678",
                 balance,
-                AccountStatus.Live,
+                accountStatus,
                 paymentSchemes);
         }
     }

@@ -42,5 +42,28 @@ namespace Smartwyre.DeveloperTest.Tests.ValidatorTests.cs
 
             Assert.False(validationResult);
         }
+
+        [Fact]
+        public void Given_AccountStatusNotLive_When_AccountValidForPaymentCalled_Then_FalseReturned()
+        {
+
+            var account = TestHelper.CreateMockAccount(100, AllowedPaymentSchemes.BankToBankTransfer, AccountStatus.InboundPaymentsOnly);
+            var payment = new MakePaymentRequest { };
+
+            var validationResult = _automatedPaymentSystemValidator.AccountValidForPayment(account, payment);
+
+            Assert.False(validationResult);
+        }
+
+        [Fact]
+        public void Given_AccountNull_When_AccountValidForPaymentCalled_Then_FalseReturned()
+        {
+
+            var payment = new MakePaymentRequest { };
+
+            var validationResult = _automatedPaymentSystemValidator.AccountValidForPayment(null, payment);
+
+            Assert.False(validationResult);
+        }
     }
 }
