@@ -36,5 +36,6 @@ Solution
 4) Created an interface for the AccountDataStore and injected it into the PaymentService.
 5) Added unit tests around the Account model, PaymentService and validators (I added one validator test class as an example, each one will test its own logic).
 6) Added DI setup in Program.cs, I created everything as Singleton just for the example. 
+7) Program.cs will run a success scenario.
 
 notes: I negated to test the AccountDataStore as it has no logic and implementing that class was not mentioned. 
