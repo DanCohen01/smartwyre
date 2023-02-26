@@ -1,11 +1,8 @@
 ﻿using Smartwyre.DeveloperTest.AccountValidators;
 using Smartwyre.DeveloperTest.Exceptions;
 using Smartwyre.DeveloperTest.Types;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Smartwyre.DeveloperTest.Factories
 {
@@ -18,9 +15,10 @@ namespace Smartwyre.DeveloperTest.Factories
             _paymentSchemeValidators = paymentSchemeValidators;
         }
 
-        public IPaymentSchemeValidator CreateValidatorForPayment(MakePaymentRequest paymentRequest)
+        public IPaymentSchemeValidator CreateValidatorForPaymentScheme(PaymentScheme paymentScheme)
         {
-            var validator = _paymentSchemeValidators.FirstOrDefault(validator => validator.PaymentScheme == paymentRequest.PaymentScheme);
+            var validator = _paymentSchemeValidators.FirstOrDefault(validator => validator.PaymentScheme == paymentScheme);
+
             if (validator is null)
             {
                 throw new ValidatorNotFoundException();

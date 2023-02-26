@@ -1,33 +1,32 @@
 ﻿using Smartwyre.DeveloperTest.Data;
+using Smartwyre.DeveloperTest.Exceptions;
 using Smartwyre.DeveloperTest.Factories;
 using Smartwyre.DeveloperTest.Types;
-using System.Configuration;
 
 namespace Smartwyre.DeveloperTest.Services
 {
     public class PaymentService : IPaymentService
     {
         IPaymentSchemeValidatorBuilder _paymentSchemeValidatorBuilder;
+        IAccountDataStore _accountDataStore;
 
-        public PaymentService(IPaymentSchemeValidatorBuilder paymentSchemeValidatorBuilder)
+        public PaymentService(IPaymentSchemeValidatorBuilder paymentSchemeValidatorBuilder, IAccountDataStore accountDataStore)
         {
             _paymentSchemeValidatorBuilder = paymentSchemeValidatorBuilder;
+            _accountDataStore = accountDataStore;
         }
 
         public MakePaymentResult MakePayment(MakePaymentRequest request)
         {
-            var accountDataStoreGetData = new AccountDataStore();
-            Account account = accountDataStoreGetData.GetAccount(request.DebtorAccountNumber);
+            var account = _accountDataStore.GetAccount(request.DebtorAccountNumber);
 
             var result = new MakePaymentResult();
-            var validator = _paymentSchemeValidatorBuilder.CreateValidatorForPayment(request);
-            if (validator.IsValidForAccount(account, request))
+            var validator = _paymentSchemeValidatorBuilder.CreateValidatorForPaymentScheme(request.PaymentScheme);
+            if (validator.AccountValidForPayment(account, request))
             {
                 result.Success = true;
                 account.Withdraw(request.Amount);
-
-                var accountDataStoreUpdateData = new AccountDataStore();
-                accountDataStoreUpdateData.UpdateAccount(account);
+                _accountDataStore.UpdateAccount(account);
                 return result;
             }
             return result;

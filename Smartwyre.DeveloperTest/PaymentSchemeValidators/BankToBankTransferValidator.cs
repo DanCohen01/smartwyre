@@ -1,10 +1,5 @@
 ﻿using Smartwyre.DeveloperTest.AccountValidators;
 using Smartwyre.DeveloperTest.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Smartwyre.DeveloperTest.PaymentSchemeValidators
 {
@@ -12,7 +7,7 @@ namespace Smartwyre.DeveloperTest.PaymentSchemeValidators
     {
         public PaymentScheme PaymentScheme => PaymentScheme.BankToBankTransfer;
 
-        public bool IsValidForAccount(Account account, MakePaymentRequest paymentRequest)
+        public bool AccountValidForPayment(Account account, MakePaymentRequest paymentRequest)
         {
             if (account == null)
             {

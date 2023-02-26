@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Smartwyre.DeveloperTest.AccountValidators;
+using Smartwyre.DeveloperTest.Data;
 using Smartwyre.DeveloperTest.Factories;
 using Smartwyre.DeveloperTest.PaymentSchemeValidators;
 using Smartwyre.DeveloperTest.Services;
@@ -14,10 +15,11 @@ namespace Smartwyre.DeveloperTest.Runner
         {
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IPaymentService, PaymentService>()
-                .AddSingleton<IPaymentSchemeValidatorBuilder,PaymentSchemeValidatorFactory>()
+                .AddSingleton<IPaymentSchemeValidatorBuilder, PaymentSchemeValidatorFactory>()
                 .AddSingleton<IPaymentSchemeValidator, AutomatedPaymentSystemValidator>()
                 .AddSingleton<IPaymentSchemeValidator, BankToBankTransferValidator>()
                 .AddSingleton<IPaymentSchemeValidator, ExpeditedPaymentsValidator>()
+                .AddSingleton<IAccountDataStore, AccountDataStore>()
                 .BuildServiceProvider();
 
            
@@ -30,6 +32,8 @@ namespace Smartwyre.DeveloperTest.Runner
                 PaymentDate = DateTime.UtcNow,
                 PaymentScheme = PaymentScheme.ExpeditedPayments
             });
+
+            Console.WriteLine(paymentResult.Success);
 
         }
     }
