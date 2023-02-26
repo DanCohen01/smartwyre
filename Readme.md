@@ -2,7 +2,7 @@
 
 1) Refactored the Account class to add a Withdraw method and stop Balance from being publicly modifiable.
 2) Used a factory pattern to find and return a validator, validators all implement the IPaymentSchemeValidator interface.
-3) Inject factory interface IPaymentSchemeValidatorBuilder into PaymentService
+3) Injected factory interface IPaymentSchemeValidatorBuilder into PaymentService
 4) Adding a new validator is as simple as creating a new class that uses the IPaymentSchemeValidator interface and registering it with DI (.AddSingleton<IPaymentSchemeValidator, ExpeditedPaymentsValidator>()).
 5) Created an interface for the AccountDataStore and injected it into the PaymentService.
 6) Added unit tests around the Account model, PaymentService and validators (I added one validator test class as an example, each one will test its own logic).
