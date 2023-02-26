@@ -9,7 +9,11 @@
 7) Added DI setup in Program.cs, I created everything as Singleton just for the example. 
 8) Program.cs will run a success scenario.
 
-notes: I negated to test the AccountDataStore as it has no logic and implementing that class was not mentioned.
+notes:
+* I assumed Payment Types mentioned in the instructions relates to PaymentSchemes
+* I negated to test the AccountDataStore as it has no logic and implementing that class was not mentioned.
+* Given more time I would focus on adding custom error reasons and logging to the solution, I chose to spend my time in other areas based on the instructions.
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
