@@ -22,7 +22,7 @@ namespace Smartwyre.DeveloperTest.Runner
                 .AddSingleton<IAccountDataStore, AccountDataStore>()
                 .BuildServiceProvider();
 
-           
+
             var paymentService = serviceProvider.GetService<IPaymentService>();
             var paymentResult = paymentService.MakePayment(new MakePaymentRequest()
             {

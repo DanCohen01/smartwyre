@@ -20,7 +20,7 @@ namespace Smartwyre.DeveloperTest.PaymentSchemeValidators
             else if (account.Status != AccountStatus.Live)
             {
                 return false;
-            }   
+            }
 
             return true;
         }

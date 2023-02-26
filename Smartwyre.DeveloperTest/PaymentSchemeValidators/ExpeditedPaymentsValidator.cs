@@ -11,7 +11,7 @@ namespace Smartwyre.DeveloperTest.PaymentSchemeValidators
         {
             if (account == null)
             {
-               return false;
+                return false;
             }
             else if (!account.AllowedPaymentSchemes.HasFlag(AllowedPaymentSchemes.ExpeditedPayments))
             {

@@ -17,15 +17,15 @@ namespace Smartwyre.DeveloperTest.Tests.ValidatorTests.cs
         {
             _automatedPaymentSystemValidator = new AutomatedPaymentSystemValidator();
         }
-       
+
         [Fact]
         public void Given_PaymentSchemeSupported_When_AccountValidForPaymentCalled_Then_TrueReturned()
         {
 
             var account = TestHelper.CreateMockAccount(100, AllowedPaymentSchemes.AutomatedPaymentSystem);
-            var payment = new MakePaymentRequest{};
+            var payment = new MakePaymentRequest { };
 
-           var validationResult = _automatedPaymentSystemValidator.AccountValidForPayment(account, payment);
+            var validationResult = _automatedPaymentSystemValidator.AccountValidForPayment(account, payment);
 
             Assert.True(validationResult);
         }

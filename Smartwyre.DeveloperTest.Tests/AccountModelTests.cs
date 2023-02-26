@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Smartwyre.DeveloperTest.Tests
 {
-    public  class AccountModelTests
+    public class AccountModelTests
     {
         [Theory]
         [InlineData(100, 50)]

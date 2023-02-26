@@ -1,5 +1,4 @@
 ﻿using Smartwyre.DeveloperTest.Data;
-using Smartwyre.DeveloperTest.Exceptions;
 using Smartwyre.DeveloperTest.Factories;
 using Smartwyre.DeveloperTest.Types;
 
